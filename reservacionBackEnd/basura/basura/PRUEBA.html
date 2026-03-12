@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/PRUEBA.css">
+    <title>Gestión de Clientes</title>
+</head>
+
+<body>
+    <div class="contenedor">
+        <h1 class="titulo">Lista de Clientes</h1>
+
+        <!-- Botón para abrir el modal de nuevo cliente -->
+        <button class="boton primario" onclick="abrirModal('formData')">Nuevo Cliente</button>
+
+        <!-- Tabla de clientes -->
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tDataCliente">
+                <!-- Las filas se generan dinámicamente desde scripts.js -->
+            </tbody>
+        </table>
+
+        <!-- Modal para agregar nuevo cliente -->
+        <div class="modal" id="formData">
+            <div class="modal-contenido">
+                <div class="modal-header">
+                    <h5>Nuevo Cliente</h5>
+                    <button class="cerrar" onclick="cerrarModal('formData')">×</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="campo">
+                            <label for="clientName">Nombre</label>
+                            <input type="text" id="clientName" placeholder="Ingrese el nombre">
+                        </div>
+                        <div class="campo">
+                            <label for="clientEmail">Correo</label>
+                            <input type="email" id="clientEmail" placeholder="Ingrese el correo">
+                        </div>
+                        <div class="campo">
+                            <label for="clientPhone">Teléfono</label>
+                            <input type="text" id="clientPhone" placeholder="Ingrese el teléfono">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="boton secundario" onclick="cerrarModal('formData')">Cerrar</button>
+                    <button class="boton primario" onclick="guardarDataCliente()">Guardar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dialog para actualizar cliente -->
+        <dialog id="formDataCliente" class="dialog">
+            <form>
+                <div class="campo">
+                    <label for="clientNameU">Nombre</label>
+                    <input type="text" id="clientNameU" placeholder="Ingrese el nombre">
+                </div>
+                <div class="campo">
+                    <label for="clientEmailU">Correo</label>
+                    <input type="email" id="clientEmailU" placeholder="Ingrese el correo">
+                </div>
+                <div class="campo">
+                    <label for="clientPhoneU">Teléfono</label>
+                    <input type="text" id="clientPhoneU" placeholder="Ingrese el teléfono">
+                </div>
+            </form>
+            <button class="boton secundario" onclick="cerrarDialogo()">Cerrar</button>
+            <button class="boton primario" onclick="actualizarDataCliente()">Actualizar</button>
+        </dialog>
+    </div>
+
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

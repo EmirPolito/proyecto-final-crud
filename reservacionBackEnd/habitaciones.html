@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/habit.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Gestión de Habitaciones</title>
+</head>
+
+<body>
+    <div class="container mt-5">
+
+        <button type="button" class="btn btn-primary mb-3" onclick="window.history.back();">Regresar</button>
+
+        <h1 class="text-center">Habitaciones</h1>
+
+        <!-- Botón para abrir el modal de nueva habitación -->
+        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#formData">Nueva Habitación</button>
+
+        <!-- Tabla de habitaciones -->
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Numero</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tDataHabitacion">
+                <!-- Las filas se generan dinámicamente desde scripts.js -->
+            </tbody>
+        </table>
+
+        <!-- Modal para agregar nueva habitación -->
+        <div class="modal fade" id="formData" tabindex="-1" aria-labelledby="formDataLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="formDataLabel">Nueva Habitación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="roomName" class="form-label">Numero</label>
+                                <input type="text" class="form-control" id="roomName" placeholder="Ingrese el nombre">
+                            </div>
+                            <div class="mb-3">
+                                <label for="roomType" class="form-label">Tipo</label>
+                                <input type="text" class="form-control" id="roomType" placeholder="Ingrese el tipo">
+                            </div>
+                            <div class="mb-3">
+                                <label for="roomPrice" class="form-label">Precio</label>
+                                <input type="text" class="form-control" id="roomPrice" placeholder="Ingrese el precio">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="guardarDataHabitacion()">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dialog para actualizar habitación -->
+        <dialog id="formDataHabitacion">
+            <form>
+                <div class="mb-3">
+                    <label for="roomNameU" class="form-label">Numero</label>
+                    <input type="text" class="form-control" id="roomNameU" placeholder="Ingrese el nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="roomTypeU" class="form-label">Tipo</label>
+                    <input type="text" class="form-control" id="roomTypeU" placeholder="Ingrese el tipo">
+                </div>
+                <div class="mb-3">
+                    <label for="roomPriceU" class="form-label">Precio</label>
+                    <input type="text" class="form-control" id="roomPriceU" placeholder="Ingrese el precio">
+                </div>
+            </form>
+            <button type="button" class="btn btn-danger" onclick="cerrarDialogo()">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="actualizarDataHabitacion()">Actualizar</button>
+        </dialog>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="js/scriptshabitaciones.js"></script>
+</body>
+
+</html>

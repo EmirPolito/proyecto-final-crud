@@ -1,0 +1,63 @@
+/*------------------- ESTILO GENERAL -------------------*/
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('../img/reservacion.jpg'); /* Ruta de la imagen de fondo */
+    background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+    background-position: center center; /* Centra la imagen */
+    background-attachment: fixed; /* La imagen de fondo no se mueve al hacer scroll */
+    color: white; /* Color de texto */
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Hace que el fondo ocupe toda la altura de la pantalla */
+    position: relative; /* Necesario para el fondo negro transparente */
+}
+
+/* Título de la lista de clientes en blanco */
+
+
+
+/*------------------- ESTILO DE LA TABLA -------------------*/
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: transparent; /* Fondo transparente en la tabla */
+}
+
+thead {
+    background-color: #0080ff; /* Azul original en el encabezado */
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid transparent; /* El borde de las celdas es transparente */
+    text-align: center;
+}
+
+th {
+    color: #ffffff; /* Color blanco para los encabezados */
+    background-color: #1e90ff; /* Fondo azul en el encabezado */
+}
+
+tbody tr {
+    background-color: transparent; /* Fondo transparente para las filas */
+}
+
+tbody tr:nth-child(even) {
+    background-color: transparent; /* Alternancia en el color de las filas transparente */
+}
+
+tbody tr:hover {
+    background-color: transparent; /* Color al pasar el mouse por las filas */
+}
+
+tbody td {
+    color: #ffffff; /* Color blanco para el texto */
+}
+
+.text-center {
+    color: #ffffff;
+}
