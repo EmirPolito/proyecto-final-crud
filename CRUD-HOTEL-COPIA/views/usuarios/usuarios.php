@@ -19,6 +19,7 @@ $query = "SELECT u.id_usuario, u.nombre_completo, u.correo, r.nombre_rol
 $stmt = $db->prepare($query);
 $stmt->execute();
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -28,13 +29,14 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Usuarios - Administrador - CRUD HOTEL</title>
     <link rel="stylesheet" href="../../css/global.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../../css/usuarios.css?v=<?php echo time(); ?>">
+
 </head>
 
 <body>
 
     <nav class="navbar">
         <a href="../panel.php" class="logo-link" style="text-decoration: none;">
-            <div class="logo">HOTEL</div>
+            <div class="logo">🏨 CRUD-HOTEL</div>
         </a>
         <div class="nav-links">
             <span style="font-weight: 600; margin-right: 15px;">
