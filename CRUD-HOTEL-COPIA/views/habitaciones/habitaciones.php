@@ -35,7 +35,11 @@ function obternerClaseEstado($estado){
             <div class="logo">🏨 CRUD-HOTEL</div>
         </a>
         <div class="nav-links">
-            <span style="font-weight: 600; margin-right: 15px;">Bienvenido, <?php echo ($_SESSION['usuario_rol_id'] == 1 ? 'Admin' : 'Cliente'); ?> <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?></span>
+            <span style="font-weight: 600; margin-right: 15px;">
+                Bienvenido 
+                <?php echo ($_SESSION['usuario_rol_id'] == 1 ? 'Administrador' : 'Cliente'); ?> 
+                <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?>
+            </span>
             <a href="../panel.php">Inicio</a>
             <?php if($_SESSION['usuario_rol_id'] == 1): ?>
                 <a href="../usuarios/usuarios.php">Usuarios</a>

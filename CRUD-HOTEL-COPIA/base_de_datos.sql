@@ -30,9 +30,9 @@ INSERT INTO roles (nombre_rol) VALUES
 /* DATOS DE PRUEBA - USUARIOS
    Las contraseñas generadas aquí son '12345' en texto plano */
 INSERT INTO usuarios (nombre_completo, correo, password, id_rol) VALUES
-('Administrador Emir', 'dsm23190242.epolito@alumnos.utsv.edu.mx', '12345', 1),
-('Administrador Irving', 'dsm23190360.imolina@alumnos.utsv.edu.mx', '12345', 1),
-('Cliente Emir Polito', 'emirpolitog@gmail.com', '12345', 2);
+('Emir', 'dsm23190242.epolito@alumnos.utsv.edu.mx', '12345', 1),
+('Irving', 'dsm23190360.imolina@alumnos.utsv.edu.mx', '12345', 1),
+('Emir Polito', 'emirpolitog@gmail.com', '12345', 2);
 
 
 -- Tablas y registros para el CRUD del hotel 
