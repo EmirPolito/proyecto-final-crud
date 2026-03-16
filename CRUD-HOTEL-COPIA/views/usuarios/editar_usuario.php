@@ -4,7 +4,7 @@ require_once '../../php/conexion.php';
 
 // Control de Acceso: Solo Administradores
 if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_rol_id'] != 1) {
-    header("Location: index.php");
+    header("Location: ../../index.php");
     exit();
 }
 
@@ -44,7 +44,7 @@ $roles = $stmtRoles->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">🏨 CRUD-HOTEL</div>
+        <div class="logo">HOTEL</div>
         <div class="nav-links">
             <a href="../usuarios/usuarios.php">Volver a Usuarios</a>
             <a href="../../php/auth/logout.php" class="btn btn-danger" style="padding: 5px 10px;">Cerrar Sesión</a>

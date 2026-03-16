@@ -41,6 +41,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['usuario_id']) && $
     $stmt->bindParam(':rol', $rol);
 
     if($stmt->execute()){
+        $id_nuevo_usuario = $db->lastInsertId();
+        
+        // Si es cliente (rol 2), crear su registro en clientes
+        if($rol == 2){
+            $stmtCliente = $db->prepare("INSERT INTO clientes (id_usuario, nombre_completo, telefono, estado) VALUES (:id_usuario, :nombre, '000-0000', 'Activo')");
+            $stmtCliente->bindParam(':id_usuario', $id_nuevo_usuario);
+            $stmtCliente->bindParam(':nombre', $nombre);
+            $stmtCliente->execute();
+        }
+
         $_SESSION['mensaje_crud'] = "Usuario registrado correctamente.";
     } else {
         $_SESSION['error_crud'] = "Ocurrió un error al registrar el usuario.";

@@ -4,7 +4,7 @@ require_once '../../php/conexion.php';
 
 // Control de Acceso: Solo Administradores
 if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_rol_id'] != 1) {
-    header("Location: index.php");
+    header("Location: ../../index.php");
     exit();
 }
 
@@ -34,15 +34,16 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="logo">HOTEL</div>
         </a>
         <div class="nav-links">
-            <span style="font-weight: 600; margin-right: 15px;">
-                Bienvenido
-                <?php echo ($_SESSION['usuario_rol_id'] == 1 ? 'Administrador' : 'Cliente'); ?>
+             <span style="font-weight: 600; margin-right: 390px;">
+                Bienvenido -
+                <?php echo($_SESSION['usuario_rol_id'] == 1 ? 'Administrador' : 'Cliente'); ?>
                 <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?>
             </span>
             <a href="../panel.php">Inicio</a>
             <?php if ($_SESSION['usuario_rol_id'] == 1): ?>
                 <a href="../usuarios/usuarios.php">Usuarios</a>
-            <?php endif; ?>
+            <?php
+endif; ?>
             <a href="../../php/auth/logout.php" class="btn btn-danger" style="margin-left: 10px; padding: 5px 10px;">Cerrar Sesión</a>
         </div>
     </nav>
@@ -54,15 +55,15 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
         <?php
-        if (isset($_SESSION['mensaje_crud'])) {
-            echo "<div class='alert alert-success' style='margin-bottom:15px;'>" . $_SESSION['mensaje_crud'] . "</div>";
-            unset($_SESSION['mensaje_crud']);
-        }
-        if (isset($_SESSION['error_crud'])) {
-            echo "<div class='alert alert-error' style='margin-bottom:15px;'>" . $_SESSION['error_crud'] . "</div>";
-            unset($_SESSION['error_crud']);
-        }
-        ?>
+if (isset($_SESSION['mensaje_crud'])) {
+    echo "<div class='alert alert-success' style='margin-bottom:15px;'>" . $_SESSION['mensaje_crud'] . "</div>";
+    unset($_SESSION['mensaje_crud']);
+}
+if (isset($_SESSION['error_crud'])) {
+    echo "<div class='alert alert-error' style='margin-bottom:15px;'>" . $_SESSION['error_crud'] . "</div>";
+    unset($_SESSION['error_crud']);
+}
+?>
 
         <table class="tabla-crud">
             <thead>
@@ -90,20 +91,21 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <button onclick="confirmarEliminacion(<?php echo $c['id_cliente']; ?>)" class="btn btn-danger btn-small">Eliminar</button>
                         </td>
                     </tr>
-                <?php endforeach; ?>
+                <?php
+endforeach; ?>
                 <?php if (count($clientes) === 0): ?>
                     <tr>
                         <td colspan="5" class="text-center" style="padding: 20px;">No hay clientes registrados.</td>
                     </tr>
-                <?php endif; ?>
+                <?php
+endif; ?>
             </tbody>
         </table>
     </div>
+    <?php include '../modal_eliminar.php'; ?>
     <script>
         function confirmarEliminacion(id) {
-            if (confirm('¿Estás seguro de eliminar este cliente? Se eliminarán también sus reservaciones.')) {
-                window.location.href = '../../php/clientes/eliminar_cliente.php?id=' + id;
-            }
+            confirmarEliminarCustom('../../php/clientes/eliminar_cliente.php?id=' + id, 'Se eliminarán también sus reservaciones.');
         }
     </script>
 </body>

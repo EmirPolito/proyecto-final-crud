@@ -4,7 +4,7 @@ require_once '../../php/conexion.php';
 
 // Control de Acceso: Solo Administradores
 if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_rol_id'] != 1) {
-    header("Location: index.php");
+    header("Location: ../../index.php");
     exit();
 }
 
@@ -20,28 +20,20 @@ $roles = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <title>Nuevo Usuario - CRUD HOTEL</title>
     <link rel="stylesheet" href="../../css/global.css">
-    <link rel="stylesheet" href="../../css/registro.css">
+    <link rel="stylesheet" href="../../css/login.css">
 </head>
 <body>
     <nav class="navbar">
-        <a href="../panel.php" class="logo-link" style="text-decoration: none;">
-            <div class="logo">🏨 CRUD-HOTEL</div>
-        </a>
+        <div class="logo">HOTEL</div>
         <div class="nav-links">
-            <span style="font-weight: 600; margin-right: 15px;">
-                Bienvenido 
-                <?php echo ($_SESSION['usuario_rol_id'] == 1 ? 'Administrador' : 'Cliente'); ?> 
-                <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?>
-            </span>
-            <a href="../panel.php">Inicio</a>
-            <a href="../usuarios/usuarios.php">Usuarios</a>
-            <a href="../../php/auth/logout.php" class="btn btn-danger" style="margin-left: 10px; padding: 5px 10px;">Cerrar Sesión</a>
+            <a href="../usuarios/usuarios.php">Volver a Usuarios</a>
+            <a href="../../php/auth/logout.php" class="btn btn-danger" style="padding: 5px 10px;">Cerrar Sesión</a>
         </div>
     </nav>
 
-    <div class="login-container" style="max-width: 500px; border-top: 4px solid #2ecc71;">
+    <div class="login-container" style="max-width: 500px; margin-top: 40px; border-top: 4px solid #2ecc71;">
         <a href="usuarios.php" class="btn-close-card" title="Cancelar">&times;</a>
-        <h2>Registrar <span style="color:#2ecc71;">Nuevo Usuario</span></h2>
+        <h2 style="margin-bottom: 25px;">Registrar <span style="color:#2ecc71;">Nuevo Usuario</span></h2>
 
         <form action="../../php/usuarios/guardar_usuario.php" method="POST">
             <div class="form-group">

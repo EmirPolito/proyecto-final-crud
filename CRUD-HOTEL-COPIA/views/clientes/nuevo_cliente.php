@@ -2,7 +2,7 @@
 session_start();
 // Control de Acceso: Solo Administradores
 if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_rol_id'] != 1) {
-    header("Location: index.php");
+    header("Location: ../../index.php");
     exit();
 }
 ?>
@@ -16,7 +16,7 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_rol_id'] != 1) {
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">🏨 CRUD-HOTEL</div>
+        <div class="logo">HOTEL</div>
         <div class="nav-links">
             <a href="../clientes/clientes.php">Volver a Clientes</a>
             <a href="../../php/auth/logout.php" class="btn btn-danger" style="padding: 5px 10px;">Cerrar Sesión</a>

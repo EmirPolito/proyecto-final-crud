@@ -3,8 +3,8 @@ session_start();
 require_once '../../php/conexion.php';
 
 // Control de Acceso: Cualquier usuario
-if (!isset($_SESSION['usuario_id'])) {
-    header("Location: index.php");
+if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_rol_id'] != 1) {
+    header("Location: ../../index.php");
     exit();
 }
 
@@ -43,7 +43,7 @@ $habitaciones = $db->query("SELECT * FROM habitaciones WHERE estado = 'Disponibl
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">🏨 CRUD-HOTEL</div>
+        <div class="logo">HOTEL</div>
         <div class="nav-links">
             <a href="../reservaciones/reservaciones.php">Volver a Reservaciones</a>
             <a href="../../php/auth/logout.php" class="btn btn-danger" style="padding: 5px 10px;">Cerrar Sesión</a>

@@ -39,9 +39,11 @@ INSERT INTO usuarios (nombre_completo, correo, password, id_rol) VALUES
 /* TABLA: clientes */
 CREATE TABLE clientes (
     id_cliente INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT DEFAULT NULL,
     nombre_completo VARCHAR(100) NOT NULL,
     telefono VARCHAR(20) NOT NULL,
-    estado ENUM('Activo', 'Inactivo') DEFAULT 'Activo'
+    estado ENUM('Activo', 'Inactivo') DEFAULT 'Activo',
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE SET NULL
 );
 
 /* TABLA: habitaciones */

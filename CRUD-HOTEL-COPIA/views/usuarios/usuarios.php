@@ -4,7 +4,7 @@ require_once '../../php/conexion.php';
 
 // Control de Acceso: Solo Administradores
 if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_rol_id'] != 1) {
-    header("Location: index.php");
+    header("Location: ../../index.php");
     exit();
 }
 
@@ -39,9 +39,9 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="logo">HOTEL</div>
         </a>
         <div class="nav-links">
-            <span style="font-weight: 600; margin-right: 15px;">
-                Bienvenido
-                <?php echo ($_SESSION['usuario_rol_id'] == 1 ? 'Administrador' : 'Cliente'); ?>
+            <span style="font-weight: 600; margin-right: 390px;">
+                Bienvenido -
+                <?php echo($_SESSION['usuario_rol_id'] == 1 ? 'Administrador' : 'Cliente'); ?>
                 <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?>
             </span>
             <a href="../panel.php">Inicio</a>
@@ -57,15 +57,15 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
         <?php
-        if (isset($_SESSION['mensaje_crud'])) {
-            echo "<div class='alert alert-success'>" . $_SESSION['mensaje_crud'] . "</div>";
-            unset($_SESSION['mensaje_crud']);
-        }
-        if (isset($_SESSION['error_crud'])) {
-            echo "<div class='alert alert-error'>" . $_SESSION['error_crud'] . "</div>";
-            unset($_SESSION['error_crud']);
-        }
-        ?>
+if (isset($_SESSION['mensaje_crud'])) {
+    echo "<div class='alert alert-success'>" . $_SESSION['mensaje_crud'] . "</div>";
+    unset($_SESSION['mensaje_crud']);
+}
+if (isset($_SESSION['error_crud'])) {
+    echo "<div class='alert alert-error'>" . $_SESSION['error_crud'] . "</div>";
+    unset($_SESSION['error_crud']);
+}
+?>
 
         <table class="tabla-crud">
             <thead>
@@ -92,25 +92,27 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <a href="editar_usuario.php?id=<?php echo $user['id_usuario']; ?>" class="btn btn-secondary btn-small">Editar</a>
                             <?php if ($user['id_usuario'] != $_SESSION['usuario_id']): ?>
                                 <button onclick="confirmarEliminacion(<?php echo $user['id_usuario']; ?>)" class="btn btn-danger btn-small">Eliminar</button>
-                            <?php endif; ?>
+                            <?php
+    endif; ?>
                         </td>
                     </tr>
-                <?php endforeach; ?>
+                <?php
+endforeach; ?>
 
                 <?php if (count($usuarios) === 0): ?>
                     <tr>
                         <td colspan="5" class="text-center" style="padding: 20px;">No hay usuarios registrados.</td>
                     </tr>
-                <?php endif; ?>
+                <?php
+endif; ?>
             </tbody>
         </table>
     </div>
 
+    <?php include '../modal_eliminar.php'; ?>
     <script>
         function confirmarEliminacion(id) {
-            if (confirm('¿Estás seguro de que deseas eliminar este usuario? Esta acción no se puede deshacer.')) {
-                window.location.href = '../../php/usuarios/eliminar_usuario.php?id=' + id;
-            }
+            confirmarEliminarCustom('../../php/usuarios/eliminar_usuario.php?id=' + id, 'Esta acción no se puede deshacer.');
         }
     </script>
 </body>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 
@@ -29,15 +29,16 @@ $rol_id = $_SESSION['usuario_rol_id'];
         </a>
 
         <div class="nav-links">
-            <span style="font-weight:600;margin-right:15px;">
-                Bienvenido 
-                <?php echo ($rol_id == 1 ? 'Administrador' : 'Cliente'); ?> 
+            <span style="font-weight:600;margin-right:35px;">
+                Bienvenido -
+                <?php echo($rol_id == 1 ? 'Administrador' : 'Cliente'); ?> 
                 <?php echo htmlspecialchars($nombre_usuario); ?>
             </span>
 
             <?php if ($rol_id == 1): ?>
                 <a href="usuarios/usuarios.php">Usuarios</a>
-            <?php endif; ?>
+            <?php
+endif; ?>
 
             <a href="../php/auth/logout.php" class="btn btn-danger" style="margin-left:15px;padding:5px 10px;">
                 Cerrar Sesión
@@ -64,13 +65,14 @@ $rol_id = $_SESSION['usuario_rol_id'];
                             <h3> Clientes</h3>
                             <p>Gestionar base de datos de clientes y estatus.</p>
                         </a>
-                        <!-- 🛏️ -->
-                        <a href="habitaciones/habitaciones.php" class="card card-admin">
-                            <h3> Habitaciones</h3>
-                            <p>Ver y modificar estado de las habitaciones del hotel.</p>
-                        </a>
-
-                    <?php endif; ?>
+                    <?php
+endif; ?>
+                    
+                    <!-- 🛏️ -->
+                    <a href="habitaciones/habitaciones.php" class="card <?php echo $rol_id == 1 ? 'card-admin' : 'card-user'; ?>">
+                        <h3> Habitaciones</h3>
+                        <p><?php echo $rol_id == 1 ? 'Ver y modificar estado de las habitaciones del hotel.' : 'Ver habitaciones disponibles.'; ?></p>
+                    </a>
                     <!-- 📅 -->
                     <a href="reservaciones/reservaciones.php" class="card card-user">
                         <h3> Reservaciones</h3>

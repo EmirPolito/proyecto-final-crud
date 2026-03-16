@@ -4,7 +4,7 @@ require_once '../../php/conexion.php';
 
 // Control de Acceso: Cualquier usuario
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location: index.php");
+    header("Location: ../../index.php");
     exit();
 }
 
@@ -12,8 +12,15 @@ $database = new Conexion();
 $db = $database->obtenerConexion();
 
 // Obtener clientes activos
-$stmtClientes = $db->query("SELECT * FROM clientes WHERE estado = 'Activo'");
-$clientes = $stmtClientes->fetchAll(PDO::FETCH_ASSOC);
+if ($_SESSION['usuario_rol_id'] == 1) {
+    $stmtClientes = $db->query("SELECT * FROM clientes WHERE estado = 'Activo'");
+    $clientes = $stmtClientes->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    $stmtClientes = $db->prepare("SELECT * FROM clientes WHERE id_usuario = :id_usuario AND estado = 'Activo'");
+    $stmtClientes->bindParam(':id_usuario', $_SESSION['usuario_id']);
+    $stmtClientes->execute();
+    $clientes = $stmtClientes->fetchAll(PDO::FETCH_ASSOC);
+}
 
 // Obtener habitaciones disponibles
 $stmtHabitaciones = $db->query("SELECT * FROM habitaciones WHERE estado = 'Disponible'");
@@ -30,7 +37,7 @@ $habitaciones = $stmtHabitaciones->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">🏨 CRUD-HOTEL</div>
+        <div class="logo">HOTEL</div>
         <div class="nav-links">
             <a href="../reservaciones/reservaciones.php">Volver a Reservaciones</a>
             <a href="../../php/auth/logout.php" class="btn btn-danger" style="padding: 5px 10px;">Cerrar Sesión</a>
@@ -48,12 +55,14 @@ $habitaciones = $stmtHabitaciones->fetchAll(PDO::FETCH_ASSOC);
         <?php else: ?>
 
         <form action="../../php/reservaciones/guardar_reserva.php" method="POST">
-            <div class="form-group">
+            <div class="form-group" <?php echo $_SESSION['usuario_rol_id'] == 2 ? 'style="display:none;"' : ''; ?>>
                 <label for="cliente">Cliente:</label>
                 <select id="cliente" name="id_cliente" required>
-                    <option value="">Seleccione...</option>
+                    <?php if($_SESSION['usuario_rol_id'] == 1): ?>
+                        <option value="">Seleccione...</option>
+                    <?php endif; ?>
                     <?php foreach($clientes as $c): ?>
-                        <option value="<?php echo $c['id_cliente']; ?>"><?php echo htmlspecialchars($c['nombre_completo']); ?></option>
+                        <option value="<?php echo $c['id_cliente']; ?>" <?php echo ($_SESSION['usuario_rol_id'] == 2) ? 'selected' : ''; ?>><?php echo htmlspecialchars($c['nombre_completo']); ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>

@@ -2,22 +2,29 @@
 session_start();
 require_once '../../php/conexion.php';
 
-// Control de Acceso: Solo Administradores
-if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_rol_id'] != 1) {
-    header("Location: index.php");
+// Control de Acceso: Usuarios logueados
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: ../../index.php");
     exit();
 }
 
 $database = new Conexion();
 $db = $database->obtenerConexion();
 
-$stmt = $db->query("SELECT * FROM habitaciones ORDER BY id_habitacion DESC");
+if ($_SESSION['usuario_rol_id'] == 1) {
+    $stmt = $db->query("SELECT * FROM habitaciones ORDER BY id_habitacion DESC");
+}
+else {
+    $stmt = $db->query("SELECT * FROM habitaciones WHERE estado = 'Disponible' ORDER BY id_habitacion DESC");
+}
 $habitaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 function obternerClaseEstado($estado)
 {
-    if ($estado == 'Disponible') return 'badge-active';
-    if ($estado == 'Ocupada') return 'badge-inactive';
+    if ($estado == 'Disponible')
+        return 'badge-active';
+    if ($estado == 'Ocupada')
+        return 'badge-inactive';
     return 'badge-user'; // Para Mantenimiento u otros
 }
 ?>
@@ -40,15 +47,16 @@ function obternerClaseEstado($estado)
             <div class="logo">HOTEL</div>
         </a>
         <div class="nav-links">
-            <span style="font-weight: 600; margin-right: 15px;">
-                Bienvenido
-                <?php echo ($_SESSION['usuario_rol_id'] == 1 ? 'Administrador' : 'Cliente'); ?>
+            <span style="font-weight: 600; margin-right: 390px;">
+                Bienvenido -
+                <?php echo($_SESSION['usuario_rol_id'] == 1 ? 'Administrador' : 'Cliente'); ?>
                 <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?>
             </span>
             <a href="../panel.php">Inicio</a>
             <?php if ($_SESSION['usuario_rol_id'] == 1): ?>
                 <a href="../usuarios/usuarios.php">Usuarios</a>
-            <?php endif; ?>
+            <?php
+endif; ?>
             <a href="../../php/auth/logout.php" class="btn btn-danger" style="margin-left: 10px; padding: 5px 10px;">Cerrar Sesión</a>
         </div>
     </nav>
@@ -56,19 +64,22 @@ function obternerClaseEstado($estado)
     <div class="container crud-container">
         <div class="crud-header">
             <h2>Gestión de Habitaciones</h2>
-            <a href="nueva_habitacion.php" class="btn btn-primary">+ Añadir Habitación</a>
+            <?php if ($_SESSION['usuario_rol_id'] == 1): ?>
+                <a href="nueva_habitacion.php" class="btn btn-primary">+ Añadir Habitación</a>
+            <?php
+endif; ?>
         </div>
 
         <?php
-        if (isset($_SESSION['mensaje_crud'])) {
-            echo "<div class='alert alert-success' style='margin-bottom:15px;'>" . $_SESSION['mensaje_crud'] . "</div>";
-            unset($_SESSION['mensaje_crud']);
-        }
-        if (isset($_SESSION['error_crud'])) {
-            echo "<div class='alert alert-error' style='margin-bottom:15px;'>" . $_SESSION['error_crud'] . "</div>";
-            unset($_SESSION['error_crud']);
-        }
-        ?>
+if (isset($_SESSION['mensaje_crud'])) {
+    echo "<div class='alert alert-success' style='margin-bottom:15px;'>" . $_SESSION['mensaje_crud'] . "</div>";
+    unset($_SESSION['mensaje_crud']);
+}
+if (isset($_SESSION['error_crud'])) {
+    echo "<div class='alert alert-error' style='margin-bottom:15px;'>" . $_SESSION['error_crud'] . "</div>";
+    unset($_SESSION['error_crud']);
+}
+?>
 
         <table class="tabla-crud">
             <thead>
@@ -77,7 +88,10 @@ function obternerClaseEstado($estado)
                     <th>Tipo</th>
                     <th>Precio x Noche</th>
                     <th>Estado</th>
-                    <th>Acción</th>
+                    <?php if ($_SESSION['usuario_rol_id'] == 1): ?>
+                        <th>Acción</th>
+                    <?php
+endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -91,26 +105,30 @@ function obternerClaseEstado($estado)
                                 <?php echo $h['estado']; ?>
                             </span>
                         </td>
+                        <?php if ($_SESSION['usuario_rol_id'] == 1): ?>
                         <td>
                             <a href="editar_habitacion.php?id=<?php echo $h['id_habitacion']; ?>" class="btn btn-secondary btn-small">Editar</a>
                             <button onclick="confirmarEliminacion(<?php echo $h['id_habitacion']; ?>)" class="btn btn-danger btn-small">Eliminar</button>
                         </td>
+                        <?php
+    endif; ?>
                     </tr>
-                <?php endforeach; ?>
+                <?php
+endforeach; ?>
                 <?php if (count($habitaciones) === 0): ?>
                     <tr>
-                        <td colspan="5" class="text-center" style="padding: 20px;">No hay habitaciones registradas.</td>
+                        <td colspan="<?php echo $_SESSION['usuario_rol_id'] == 1 ? '5' : '4'; ?>" class="text-center" style="padding: 20px;">No hay habitaciones para mostrar.</td>
                     </tr>
-                <?php endif; ?>
+                <?php
+endif; ?>
             </tbody>
         </table>
     </div>
 
+    <?php include '../modal_eliminar.php'; ?>
     <script>
         function confirmarEliminacion(id) {
-            if (confirm('¿Estás seguro de eliminar esta habitación? Se eliminarán también las reservaciones asociadas a ella.')) {
-                window.location.href = '../../php/habitaciones/eliminar_habitacion.php?id=' + id;
-            }
+            confirmarEliminarCustom('../../php/habitaciones/eliminar_habitacion.php?id=' + id, 'Se eliminarán también las reservaciones asociadas a ella.');
         }
     </script>
 </body>
