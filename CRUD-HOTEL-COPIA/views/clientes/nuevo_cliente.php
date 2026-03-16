@@ -24,6 +24,7 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_rol_id'] != 1) {
     </nav>
 
     <div class="login-container" style="max-width: 500px; margin-top: 40px; border-top: 4px solid #3498db;">
+        <a href="clientes.php" class="btn-close-card" title="Cancelar">&times;</a>
         <h2 style="margin-bottom: 25px;">Registrar <span style="color:#3498db;">Nuevo Cliente</span></h2>
 
         <form action="../../php/clientes/guardar_cliente.php" method="POST">

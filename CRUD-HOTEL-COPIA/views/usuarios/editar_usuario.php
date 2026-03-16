@@ -52,6 +52,7 @@ $roles = $stmtRoles->fetchAll(PDO::FETCH_ASSOC);
     </nav>
 
     <div class="login-container" style="max-width: 500px; margin-top: 40px; border-top: 4px solid #3498db;">
+        <a href="usuarios.php" class="btn-close-card" title="Cancelar">&times;</a>
         <h2 style="margin-bottom: 25px;">Editar Usuario <span style="color:#3498db;">#<?php echo $usuario['id_usuario']; ?></span></h2>
 
         <form action="../../php/usuarios/actualizar_usuario.php" method="POST">

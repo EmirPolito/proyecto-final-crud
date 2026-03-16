@@ -40,6 +40,7 @@ $roles = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </nav>
 
     <div class="login-container" style="max-width: 500px; border-top: 4px solid #2ecc71;">
+        <a href="usuarios.php" class="btn-close-card" title="Cancelar">&times;</a>
         <h2>Registrar <span style="color:#2ecc71;">Nuevo Usuario</span></h2>
 
         <form action="../../php/usuarios/guardar_usuario.php" method="POST">

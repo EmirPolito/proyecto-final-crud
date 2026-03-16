@@ -36,7 +36,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <nav class="navbar">
         <a href="../panel.php" class="logo-link" style="text-decoration: none;">
-            <div class="logo">🏨 CRUD-HOTEL</div>
+            <div class="logo">HOTEL</div>
         </a>
         <div class="nav-links">
             <span style="font-weight: 600; margin-right: 15px;">
@@ -52,7 +52,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="container crud-container">
         <div class="crud-header">
-            <h2>Gestión de Usuarios</h2>
+            <h2 class="ttl">Gestión de Usuarios</h2>
             <a href="nuevo_usuario.php" class="btn btn-primary">+ Nuevo Usuario</a>
         </div>
 
@@ -80,11 +80,11 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <tbody>
                 <?php foreach ($usuarios as $user): ?>
                     <tr>
-                        <td><?php echo $user['id_usuario']; ?></td>
-                        <td><strong><?php echo htmlspecialchars($user['nombre_completo']); ?></strong></td>
-                        <td style="color: #666;"><?php echo htmlspecialchars($user['correo']); ?></td>
+                        <td style="color: #c6c6c6;"><?php echo $user['id_usuario']; ?></td>
+                        <td style="color: #c6c6c6;"><strong><?php echo htmlspecialchars($user['nombre_completo']); ?></strong></td>
+                        <td style="color: #c6c6c6;"><?php echo htmlspecialchars($user['correo']); ?></td>
                         <td>
-                            <span class="badge <?php echo $user['nombre_rol'] == 'Administrador' ? 'badge-admin' : 'badge-user'; ?>">
+                            <span style="color: #c6c6c6;" class="badge <?php echo $user['nombre_rol'] == 'Administrador' ? 'badge-admin' : 'badge-user'; ?>">
                                 <?php echo $user['nombre_rol']; ?>
                             </span>
                         </td>

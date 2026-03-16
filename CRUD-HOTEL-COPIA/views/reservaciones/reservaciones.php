@@ -27,14 +27,15 @@ $reservaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Gestión de Reservaciones - CRUD HOTEL</title>
-    <link rel="stylesheet" href="../../css/global.css">
-    <link rel="stylesheet" href="../../css/reservaciones.css">
+    <link rel="stylesheet" href="../../css/global.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../css/reservaciones.css?v=<?php echo time(); ?>">
+
 </head>
 <body>
 
     <nav class="navbar">
         <a href="../panel.php" class="logo-link" style="text-decoration: none;">
-            <div class="logo">🏨 CRUD-HOTEL</div>
+            <div class="logo">HOTEL</div>
         </a>
         <div class="nav-links">
             <span style="font-weight: 600; margin-right: 15px;">
@@ -50,10 +51,10 @@ $reservaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </nav>
 
-    <div class="container crud-container" style="border-top: 4px solid #f39c12;">
+    <div class="container crud-container">
         <div class="crud-header">
-            <h2>📅 Gestión de Reservaciones</h2>
-            <a href="nueva_reserva.php" class="btn btn-success">+ Nueva Reserva</a>
+            <h2>Gestión de Reservaciones</h2>
+            <a href="nueva_reserva.php" class="btn btn-primary">+ Nueva Reserva</a>
         </div>
 
         <?php
@@ -82,13 +83,13 @@ $reservaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <tbody>
                 <?php foreach($reservaciones as $r): ?>
                 <tr>
-                    <td><strong><?php echo htmlspecialchars($r['codigo']); ?></strong></td>
-                    <td><?php echo htmlspecialchars($r['cliente']); ?></td>
-                    <td><?php echo htmlspecialchars($r['habitacion']); ?></td>
-                    <td><?php echo date("d/m/Y", strtotime($r['fecha_entrada'])); ?></td>
-                    <td><?php echo date("d/m/Y", strtotime($r['fecha_salida'])); ?></td>
+                    <td style="color: #c6c6c6;"><strong><?php echo htmlspecialchars($r['codigo']); ?></strong></td>
+                    <td style="color: #c6c6c6;"><?php echo htmlspecialchars($r['cliente']); ?></td>
+                    <td style="color: #c6c6c6;"><?php echo htmlspecialchars($r['habitacion']); ?></td>
+                    <td style="color: #c6c6c6;"><?php echo date("d/m/Y", strtotime($r['fecha_entrada'])); ?></td>
+                    <td style="color: #c6c6c6;"><?php echo date("d/m/Y", strtotime($r['fecha_salida'])); ?></td>
                     <td>
-                        <span class="badge <?php echo $r['estado'] == 'Confirmada' ? 'badge-active' : ($r['estado'] == 'Pendiente' ? 'badge-user' : 'badge-inactive'); ?>">
+                        <span style="color: #c6c6c6;" class="badge <?php echo $r['estado'] == 'Confirmada' ? 'badge-active' : ($r['estado'] == 'Pendiente' ? 'badge-user' : 'badge-inactive'); ?>">
                             <?php echo $r['estado']; ?>
                         </span>
                     </td>

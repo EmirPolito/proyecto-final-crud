@@ -46,6 +46,7 @@ if(!$habitacion){
     </nav>
 
     <div class="login-container" style="max-width: 500px; margin-top: 40px; border-top: 4px solid #f39c12;">
+        <a href="habitaciones.php" class="btn-close-card" title="Cancelar">&times;</a>
         <h2 style="margin-bottom: 25px;">Editar Habitación <span style="color:#f39c12;">#<?php echo $habitacion['numero']; ?></span></h2>
 
         <form action="../../php/habitaciones/actualizar_habitacion.php" method="POST">

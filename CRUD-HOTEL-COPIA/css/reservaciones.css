@@ -1,11 +1,11 @@
 /* Estilo base para reservaciones.php */
 body {
-    background-color: #1a1a2e; /* Fondo oscuro */
-    background-image: url('../img/bg-reservaciones.jpg'); /* Reemplazar por tu imagen */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: #f1f2f6; /* Texto claro */
+  background-color: #1a1a2e; /* Fondo oscuro */
+  background-image: url("../img//reservacion.jpg"); /* Reemplazar por tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #f1f2f6; /* Texto claro */
 }
 
 /* Efecto superpuesto oscuro para mejorar legibilidad */
@@ -13,18 +13,28 @@ body::before {
     content: '';
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Capa oscura */
+    background: rgba(0, 0, 0, 0.4); /* Capa menos oscura */
     z-index: -1;
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    padding: 30px;
-    margin-top: 30px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  background: #c0b5b51a;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 30px;
+
+  /* Espaciado forzado superior para evitar que pegue al navbar */
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
+
+  /* CENTRADO */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 90%;
+  max-width: 1000px;
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .table-container {
@@ -42,7 +52,7 @@ table {
 
 th, td {
     padding: 12px 15px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
@@ -67,4 +77,18 @@ th {
     align-items: center;
     margin-bottom: 20px;
     color: white;
+}
+
+.crud-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* separación con la tabla */
+  margin-bottom: 30px;
+}
+
+/* separación entre el título y el botón */
+.crud-header h2 {
+  margin-right: 20px;
 }

@@ -46,6 +46,7 @@ if(!$cliente){
     </nav>
 
     <div class="login-container" style="max-width: 500px; margin-top: 40px; border-top: 4px solid #f39c12;">
+        <a href="clientes.php" class="btn-close-card" title="Cancelar">&times;</a>
         <h2 style="margin-bottom: 25px;">Editar Cliente <span style="color:#f39c12;">#<?php echo $cliente['id_cliente']; ?></span></h2>
 
         <form action="../../php/clientes/actualizar_cliente.php" method="POST">

@@ -17,13 +17,14 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: #201e1e8c; /* controla que tan oscura */
+  background: rgba(0, 0, 0, 0.4); /* controla que tan oscura */
   z-index: -1;
 }
 
 /* ===== LOGIN ===== */
 
 .login-container {
+  position: relative;
   width: 100%;
   max-width: 410px;
   margin: 160px auto;
