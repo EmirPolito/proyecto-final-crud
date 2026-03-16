@@ -32,7 +32,7 @@ $habitaciones = $stmtHabitaciones->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Nueva Reserva - CRUD HOTEL</title>
-    <link rel="stylesheet" href="../../css/global.css">
+
     <link rel="stylesheet" href="../../css/login.css">
 </head>
 <body>

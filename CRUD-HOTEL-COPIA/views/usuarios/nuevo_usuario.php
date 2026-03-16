@@ -19,7 +19,7 @@ $roles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Nuevo Usuario - CRUD HOTEL</title>
-    <link rel="stylesheet" href="../../css/global.css">
+
     <link rel="stylesheet" href="../../css/login.css">
 </head>
 <body>

@@ -35,7 +35,7 @@ function obternerClaseEstado($estado)
     <meta charset="UTF-8">
     <title>Gestión de Habitaciones - CRUD HOTEL</title>
 
-    <link rel="stylesheet" href="../../css/global.css?v=<?php echo time(); ?>">
+
     <link rel="stylesheet" href="../../css/habitaciones.css?v=<?php echo time(); ?>">
 
 </head>

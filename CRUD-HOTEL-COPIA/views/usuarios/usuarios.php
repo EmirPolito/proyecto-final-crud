@@ -27,7 +27,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Usuarios - Administrador - CRUD HOTEL</title>
-    <link rel="stylesheet" href="../../css/global.css?v=<?php echo time(); ?>">
+
     <link rel="stylesheet" href="../../css/usuarios.css?v=<?php echo time(); ?>">
 
 </head>

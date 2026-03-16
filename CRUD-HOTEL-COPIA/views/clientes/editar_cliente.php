@@ -33,7 +33,7 @@ if(!$cliente){
 <head>
     <meta charset="UTF-8">
     <title>Editar Cliente - CRUD HOTEL</title>
-    <link rel="stylesheet" href="../../css/global.css">
+
     <link rel="stylesheet" href="../../css/login.css">
 </head>
 <body>

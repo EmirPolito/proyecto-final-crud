@@ -16,7 +16,7 @@ $rol_id = $_SESSION['usuario_rol_id'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Principal - CRUD HOTEL</title>
 
-    <link rel="stylesheet" href="../css/global.css?v=<?php echo time(); ?>">
+
     <link rel="stylesheet" href="../css/panel.css?v=<?php echo time(); ?>">
 
 </head>

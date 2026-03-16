@@ -12,8 +12,6 @@ if (isset($_SESSION['usuario_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - CRUD HOTEL</title>
-
-    <link rel="stylesheet" href="../css/global.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/login.css?v=<?php echo time(); ?>">
 </head>
 
@@ -26,15 +24,15 @@ if (isset($_SESSION['usuario_id'])) {
         <h2>Iniciar Sesión</h2>
 
         <?php
-        if (isset($_SESSION['error_login'])) {
-            echo "<div class='alert alert-error'>" . $_SESSION['error_login'] . "</div>";
-            unset($_SESSION['error_login']);
-        }
-        if (isset($_SESSION['mensaje_exito'])) {
-            echo "<div class='alert alert-success'>" . $_SESSION['mensaje_exito'] . "</div>";
-            unset($_SESSION['mensaje_exito']);
-        }
-        ?>
+if (isset($_SESSION['error_login'])) {
+    echo "<div class='alert alert-error'>" . $_SESSION['error_login'] . "</div>";
+    unset($_SESSION['error_login']);
+}
+if (isset($_SESSION['mensaje_exito'])) {
+    echo "<div class='alert alert-success'>" . $_SESSION['mensaje_exito'] . "</div>";
+    unset($_SESSION['mensaje_exito']);
+}
+?>
 
         <form id="formLogin" action="../php/auth/validar_login.php" method="POST">
             <div class="form-group">

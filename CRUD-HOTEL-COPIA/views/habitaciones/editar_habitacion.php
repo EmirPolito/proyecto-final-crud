@@ -33,7 +33,7 @@ if(!$habitacion){
 <head>
     <meta charset="UTF-8">
     <title>Editar Habitación - CRUD HOTEL</title>
-    <link rel="stylesheet" href="../../css/global.css">
+
     <link rel="stylesheet" href="../../css/login.css">
 </head>
 <body>
