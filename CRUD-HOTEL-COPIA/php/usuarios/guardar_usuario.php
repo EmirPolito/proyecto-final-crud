@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['usuario_id']) && $
     exit();
 
 } else {
-    header("Location: ../../index.php");
+    header("Location: ../../login.php");
     exit();
 }
 ?>

@@ -4,7 +4,7 @@ require_once '../conexion.php';
 
 // Control de Acceso
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location: ../../index.php");
+    header("Location: ../../login.php");
     exit();
 }
 

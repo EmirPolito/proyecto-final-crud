@@ -3,7 +3,7 @@ session_start();
 require_once '../conexion.php';
 
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location: ../../index.php");
+    header("Location: ../../login.php");
     exit();
 }
 
