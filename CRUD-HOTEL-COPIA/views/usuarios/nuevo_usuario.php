@@ -31,7 +31,7 @@ $roles = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </nav>
 
-    <div class="login-container" style="max-width: 500px; margin-top: 40px; border-top: 4px solid #2ecc71;">
+    <div class="login-container" style="max-width: 550px;   margin: 15px auto;  border-top: 4px solid #1cc261;">
         <a href="usuarios.php" class="btn-close-card" title="Cancelar">&times;</a>
         <h2 style="margin-bottom: 25px;">Registrar <span style="color:#2ecc71;">Nuevo Usuario</span></h2>
 

@@ -44,7 +44,7 @@ $habitaciones = $stmtHabitaciones->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </nav>
 
-    <div class="login-container" style="max-width: 500px; margin-top: 40px; border-top: 4px solid #f39c12;">
+    <div class="login-container" style="max-width: 500px; margin: 10px auto; border-top: 4px solid #f39c12;">
         <a href="reservaciones.php" class="btn-close-card" title="Cancelar">&times;</a>
         <h2 style="margin-bottom: 25px;">Crear <span style="color:#f39c12;">Nueva Reserva</span></h2>
 

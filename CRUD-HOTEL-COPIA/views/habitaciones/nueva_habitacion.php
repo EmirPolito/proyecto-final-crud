@@ -23,7 +23,7 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_rol_id'] != 1) {
         </div>
     </nav>
 
-    <div class="login-container" style="max-width: 500px; margin-top: 40px; border-top: 4px solid #9b59b6;">
+    <div class="login-container" style="max-width: 500px; margin: 10px auto; border-top: 4px solid #9b59b6;">
         <a href="habitaciones.php" class="btn-close-card" title="Cancelar">&times;</a>
         <h2 style="margin-bottom: 25px;">Registrar <span style="color:#9b59b6;">Habitación</span></h2>
 
