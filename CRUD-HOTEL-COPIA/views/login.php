@@ -16,7 +16,6 @@ if (isset($_SESSION['usuario_id'])) {
 </head>
 
 <body>
-
     <!-- FONDO -->
     <div class="login-bg"></div>
 

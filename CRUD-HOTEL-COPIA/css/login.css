@@ -25,7 +25,6 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 /* -------------------------------------- */
 
 /* ===== FONDO DE LA PAGINA ===== */
-
 body {
   margin: 0;
   padding: 0;
@@ -42,8 +41,8 @@ body {
 body::before {
   content: "";
   position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4); /* controla que tan oscura */
+  inset: 1;
+  background: #00000066; /* controla que tan oscura */
   z-index: -1;
 }
 
@@ -76,13 +75,22 @@ body::before {
   font-weight: 600;/* grosor de letras Correo Contr */
 }
 
+/*  INPUTS CORREGIDOS */
 .form-group input,
 .form-group select {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ddd;
+  border: 0.8px solid #999; /* más delgado + gris oscuro */
   border-radius: 6px;
   font-size: 16px;
+}
+
+/* EFECTO AL ENFOCAR */
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border: 0.8px solid #1170ae;
+  box-shadow: 0 0 0 1px rgba(17, 112, 174, 0.2);
 }
 
 /* BOTON LOGIN */

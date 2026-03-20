@@ -53,10 +53,9 @@ body { display: flex; flex-direction: column; min-height: 100vh; background-colo
 }
 
 /* OSCURECER IMAGEN DERECHA */
-
 .panel-overlay {
   position: absolute;
-  inset: 0;
+  inset: 1;
   background: #1514148c;
   z-index: 1;
 }
